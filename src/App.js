@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
@@ -7,8 +7,8 @@ import Form from 'react-bootstrap/Form';
 
 function App() {
   const [formValues, setFormValues] = useState({email:"", password:"", favClass:"1"})
-  const [emailValid, setEmailValid] = useState(false); // Track email field validation
-  const [passwordValid, setPasswordValid] = useState(false); // Track password field validation
+  const [emailValid, setEmailValid] = useState(true); // Track email field validation
+  const [passwordValid, setPasswordValid] = useState(true); // Track password field validation
   const [touched, setTouched] = useState({ email: false, password: false });
 
 
@@ -59,15 +59,13 @@ function App() {
       <Form.Group className="mb-6" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
         <Form.Control type="email" placeholder="Enter email" onChange={handleEmailChange} value={formValues.email} isInvalid={touched.email && !emailValid} isValid={touched.email && emailValid}/>
-        { !emailValid && <Form.Text className="text-muted">We'll never share your email with anyone else.</Form.Text>}
-
-        {/* <Form.Control.Feedback type="invalid">Please enter a valid email.</Form.Control.Feedback> */}
+        <Form.Control.Feedback type="invalid">Please enter a valid email.</Form.Control.Feedback>
       </Form.Group>
  
       <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
+        <Form.Label>Password</Form.Label>       
         <Form.Control type="password" placeholder="Password" onChange={handlePasswordChange} value={formValues.password} isInvalid={touched.password && !passwordValid} isValid={touched.password && passwordValid} />
-        { !passwordValid && <Form.Text className="text-muted">Your password should be have numbers and letters and should be at least 9 char long</Form.Text>}
+        <Form.Control.Feedback type="invalid">Your password should be have numbers and letters and should be at least 9 char long</Form.Control.Feedback>
 
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
